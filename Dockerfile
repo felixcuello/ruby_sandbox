@@ -7,7 +7,7 @@ LABEL description="Just a ruby sandbox to avoid polluting my system"
 RUN apt update -y && \
     apt install -y git curl libssl-dev libreadline-dev zlib1g-dev \
                    autoconf bison build-essential libyaml-dev libncurses5-dev \
-                   libffi-dev libgdbm-dev vim git curl
+                   libffi-dev libgdbm-dev vim git curl silversearcher-ag
 
 # rbenv installation ------------------------------------------------------------------------------
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv \
@@ -19,7 +19,7 @@ RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv \
 ENV PATH /root/.rbenv/bin:/root/.rbenv/shims:$PATH
 RUN    rbenv install 2.7.8 \
     && rbenv install 3.2.3 \
-    && rbenv global 3.2.3 \
+    && rbenv global 2.7.8 \
     && rbenv rehash
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
