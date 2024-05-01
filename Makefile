@@ -21,5 +21,10 @@ build:
 
 # Enter a shell inside the container --------------------------------------------------------------
 shell:
-	@docker run -ti --rm -v ${APP_DIR}:/app ${CONTAINER_TAG} /bin/bash
+	@docker run -ti --rm \
+		-v ${APP_DIR}:/app \
+		-v ${HOME}/.ssh:/root/.ssh \
+		-v ${HOME}/.github-token:/root/.github-token \
+		-v ${PWD}/.vimrc:/root/.vimrc \
+		${CONTAINER_TAG} /bin/bash
 
